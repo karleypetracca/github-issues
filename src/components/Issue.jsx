@@ -1,9 +1,9 @@
 import React from "react";
-import ReactMarkdown from "react-markdown";
+import Markdown from "markdown-to-jsx";
 import "./Issue.css";
 
 function Issue(props) {
-    let { title, link, body, user, openDate, issueId } = props;
+    let { title, link, body, user, userLink, openDate, issueId } = props;
 	let formattedDate = openDate.toString().slice(0,10);
 	
 	// let display = { display: "block" },
@@ -21,19 +21,19 @@ function Issue(props) {
     // }
 
     return (
-		<div
-			className="issueContainer"
-		>
-			<a href={link}>
-				<h2>{title}</h2>
-			</a>
-			<div>
-				<ReactMarkdown className="markdownBody" source={body} />
-			</div>
-			<p className="footer">
-				#{issueId} opened {formattedDate} by {user}
-			</p>
-		</div>
+      <div className="issueContainer">
+        <a href={link}>
+          <h2>{title}</h2>
+        </a>
+        <div>
+          <Markdown className="markdownBody">
+            {body}
+          </Markdown>
+        </div>
+        <p className="footer">
+          #{issueId} opened {formattedDate} by <a href={userLink}>{user}</a>
+        </p>
+      </div>
     );
 }
 

@@ -1,11 +1,11 @@
 .issueContainer {
     text-align: left;
-    margin: 5px;
+    margin: 10px auto;
     padding: 5px;
     border-style: solid;
     border-width: 1px;
-    max-width: 1000px;
     width: 100%;
+    max-width: 1000px;
 }
 
 .issueContainer a {
@@ -16,11 +16,14 @@
 
 .markdownBody {
     width: 100%;
+    overflow: scroll;
+    max-width: 1000px;
+    max-height: 300px;
 }
 
 .markdownBody * {
     width: 100%;
-    word-wrap: normal;
+    max-width: 1000px;
 }
 
 .markdownBody img {
@@ -29,5 +32,6 @@
 }
 
 .footer {
+    margin: 10px 0;
     font-style: italic;
 }

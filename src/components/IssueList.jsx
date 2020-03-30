@@ -25,11 +25,11 @@ class IssueList extends Component {
         renderIssues = this.state.issues.map((element, index) => {
             return <Issue key={index} title={element.title} link={element.url}
                 body={element.body} user={element.user.login}
-                openDate={element.created_at}
+                userLink={element.user.html_url} openDate={element.created_at}
                 issueId={element.number}/>
         })
         return (
-            <div>
+            <div style={{ margin: "10px auto" }}>
                 {renderIssues}
             </div>
         )
