@@ -3,7 +3,7 @@ import Markdown from "markdown-to-jsx";
 import { getAPI } from "../utilities/getAPI";
 import "./Issue.css";
 
-class Issue extends Component {
+class IssueDetail extends Component {
 	constructor() {
 		super();
 		this.state = {
@@ -60,4 +60,4 @@ class Issue extends Component {
 	}
 }
 
-export default Issue;
+export default IssueDetail;
