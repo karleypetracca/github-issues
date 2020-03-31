@@ -1,27 +1,63 @@
-import React from "react";
+import React, { Component } from "react";
 import Markdown from "markdown-to-jsx";
+import { getAPI } from "../utilities/getAPI";
 import "./Issue.css";
 
-function Issue(props) {
-  let { issues } = props,
-    formattedDate = issues.created_at.toString().slice(0,10);
+class Issue extends Component {
+	constructor() {
+		super();
+		this.state = {
+      detail: {},
+      githubUrl: "",
+      title: "",
+      date: "",
+      body: "",
+      user: "",
+      userUrl: "",
+      issueNumber: "",
+    };
+	}
 
-    return (
+	async componentDidMount() {
+		try {
+			const { number } = this.props.match.params;
+			const url = `https://api.github.com/repos/facebook/create-react-app/issues/${number}`;
+			const detail = await getAPI(url);
+			this.setState({
+        detail: detail,
+        githubUrl: detail.html_url,
+        title: detail.title,
+        date: detail.created_at.toString().slice(0, 10),
+        body: detail.body,
+        user: detail.user.login,
+        userUrl: detail.user.html_url,
+        issueNumber: detail.number
+      });
+
+		} catch(error) {
+			console.log("ERROR: ", error)
+		}
+	}
+	
+	render() {
+		return (
       <div className="issueContainer">
-        <a href={issues.url}>
-          <h2>{issues.title}</h2>
+        <a href={this.state.githubUrl}>
+          <h2>{this.state.title} #{this.state.issueNumber}</h2>
         </a>
         <div>
           <Markdown className="markdownBody">
-            {issues.body}
-          </Markdown>
+						{this.state.body}
+					</Markdown>
         </div>
         <p className="footer">
-          #{issues.number} opened {formattedDate} by
-          <a href={issues.user.html_url}>{issues.user.login}</a>
-        </p>
+					#{this.state.issueNumber} opened {this.state.date} by{" "}
+					<a href={this.state.userUrl}>
+					{this.state.user}</a>
+				</p>
       </div>
     );
+	}
 }
 
 export default Issue;

@@ -1,37 +1,41 @@
+.issueListContainer {
+	margin: 10px auto;
+}
+
 .issueContainer {
-    text-align: left;
-    margin: 10px auto;
-    padding: 5px;
-    border-style: solid;
-    border-width: 1px;
-    width: 100%;
-    max-width: 1000px;
+	text-align: left;
+	margin: 10px auto;
+	padding: 5px;
+	border-style: solid;
+	border-width: 1px;
+	width: 100%;
+	max-width: 1000px;
 }
 
 .issueContainer a {
-    cursor: pointer;
-    color: inherit;
-    text-decoration: none;
+	cursor: pointer;
+	color: inherit;
+	text-decoration: none;
 }
 
 .markdownBody {
-    width: 100%;
-    overflow: scroll;
-    max-width: 1000px;
-    max-height: 300px;
+	width: 100%;
+	overflow: scroll;
+	overflow-y: hidden;
+	max-width: 1000px;
 }
 
 .markdownBody * {
-    width: 100%;
-    max-width: 1000px;
+	width: 100%;
+	max-width: 1000px;
 }
 
 .markdownBody img {
-    max-width: 100%;
-    width: auto;
+	max-width: 100%;
+	width: auto;
 }
 
 .footer {
-    margin: 10px 0;
-    font-style: italic;
+	margin: 10px 0;
+	font-style: italic;
 }
