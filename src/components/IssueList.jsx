@@ -8,12 +8,12 @@ class IssueList extends Component {
 
     async componentDidMount() {
         try {
-            let response, data,
+            let response, issues,
                 url = "https://api.github.com/repos/facebook/create-react-app/issues";
             response = await fetch(url);
-            data = await response.json();
+            issues = await response.json();
             this.setState({
-                issues: await data,
+                issues
             })
         } catch(error) {
             console.log("ERROR: ", error)
@@ -23,10 +23,7 @@ class IssueList extends Component {
     render() {
         let renderIssues;
         renderIssues = this.state.issues.map((element, index) => {
-            return <Issue key={index} title={element.title} link={element.url}
-                body={element.body} user={element.user.login}
-                userLink={element.user.html_url} openDate={element.created_at}
-                issueId={element.number}/>
+            return <Issue key={index} issues={element}/>
         })
         return (
             <div style={{ margin: "10px auto" }}>
