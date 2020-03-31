@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Issue from "./Issue.jsx";
+import { getAPI } from "../utilities/getAPI";
 
 class IssueList extends Component {
     state = {
@@ -8,10 +9,8 @@ class IssueList extends Component {
 
     async componentDidMount() {
         try {
-            let response, issues,
-                url = "https://api.github.com/repos/facebook/create-react-app/issues";
-            response = await fetch(url);
-            issues = await response.json();
+            const url = "https://api.github.com/repos/facebook/create-react-app/issues";
+            const issues = await getAPI(url);
             this.setState({
                 issues
             })

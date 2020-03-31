@@ -1,18 +1,17 @@
 import React from "react";
 import IssueList from "./components/IssueList.jsx";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          GitHub Issue List
-        </p>
+        <p>GitHub Issues</p>
       </header>
-      <main>
-        <IssueList />
-      </main>
+      <Router>
+        <Route path="/" exact component={IssueList} />
+      </Router>
     </div>
   );
 }
