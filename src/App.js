@@ -1,7 +1,7 @@
 import React from "react";
 import IssueList from "./components/IssueList.jsx";
 import IssueDetail from "./components/IssueDetail.jsx";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 
 function App() {
