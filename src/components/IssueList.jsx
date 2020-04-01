@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { getAPI } from "../utilities/getAPI";
 import { Link } from "react-router-dom";
 import "./Issue.css";
@@ -17,7 +17,9 @@ function IssueList() {
 		}
 	};
 
-	getIssues();
+	useEffect(() => {
+		getIssues();
+	});
 
 	const renderIssues = issues.map(issue => {
 		const formattedDate = issue.created_at.toString().slice(0, 10);
